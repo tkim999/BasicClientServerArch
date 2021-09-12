@@ -1,4 +1,4 @@
-package WarmupWeek1;
+package WarmupWeek1_2;
 
 public class NumberToDigits {
 
