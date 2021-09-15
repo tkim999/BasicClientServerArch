@@ -19,6 +19,7 @@ public class MainApp {
             inputNumber = input.nextInt();
         }catch(InputMismatchException e){
             System.out.println("Invalid input, input must be an integer");
+            System.exit(0);
         }
 
         // Check if number in cycler is prime and happy
@@ -39,8 +40,7 @@ public class MainApp {
         }
         // If it is not happy nor prime
         else{
-            System.out.println(inputNumber + " is NOT happy or prime");
-            System.out.println("It's prime factors are: ");
+            System.out.println("The prime factors of " + inputNumber + " are: ");
 
             int[] arrOfPrimeFactors = CalcFactors.getPrimeFactorsOf(inputNumber);
             for(int primeFactor : arrOfPrimeFactors)
