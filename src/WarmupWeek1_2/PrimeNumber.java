@@ -4,8 +4,9 @@ public class PrimeNumber {
     public static boolean isPrime(int n) throws IllegalArgumentException{
         // Check if n is negative
         if(n < 0) throw new IllegalArgumentException();
+        else if(n==1)
+            return false;
 
-        boolean divisibleNotPrime;
 
         int divisor = 2;
         while(divisor < n){
