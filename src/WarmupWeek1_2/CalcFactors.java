@@ -12,17 +12,29 @@ public class CalcFactors {
         int[] arrOfPrimeFactors;
 
         // Create ArrayList to store all prime factors
-        LinkedList<Integer> storageList = new LinkedList<Integer>();
+        LinkedList<Integer> storageList = new LinkedList<>();
 
-        // Initialize testFactor int to check for factors of the nonPrime
-        int testFactor = 1;
+        // Initialize testFactor int to check for factors of nonPrime
+        int testFactor = 2;
 
         while(testFactor < nonPrime){
 
             // Test if testFactor is a factor of nonPrime
-            if(nonPrime % testFactor == 0)
-                if(PrimeNumber.isPrime(testFactor)) // check if testFactor IS prime
-                    storageList.add(testFactor); // if true, add to ArrayList
+            if(nonPrime % testFactor == 0) {
+
+                // check if testFactor IS prime
+                if (PrimeNumber.isPrime(testFactor))
+                    // if true, add to ArrayList
+                    storageList.add(testFactor);
+                else{
+                    // Recursively call itself to get prime factors of non-prime-factors
+                    int[] nestedPrimeFactors = getPrimeFactorsOf(testFactor);
+                    // Store all prime factors in array to return
+                    for(int factor : nestedPrimeFactors)
+                        storageList.add(factor);
+                }
+            }
+
 
             // Increase testFactor by 1 for next loop
             testFactor++;

@@ -40,11 +40,16 @@ public class MainApp {
         }
         // If it is not happy nor prime
         else{
-            System.out.println("The prime factors of " + inputNumber + " are: ");
+            System.out.print("The prime factors of " + inputNumber + " are: ");
 
             int[] arrOfPrimeFactors = CalcFactors.getPrimeFactorsOf(inputNumber);
-            for(int primeFactor : arrOfPrimeFactors)
-                System.out.println(primeFactor);
+            for(int i = 0; i < arrOfPrimeFactors.length; i++){
+                if(i < arrOfPrimeFactors.length - 1)
+                    System.out.print(arrOfPrimeFactors[i] + ",");
+                else
+                    System.out.print(arrOfPrimeFactors[i]);
+            }
+
         }
     }
 }
