@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="345822b2-2d7f-4be1-baf7-0097356f85d2" name="Changes" comment="Added starter files (given by Reinhart)">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="1f576a1c-7ff1-4fd8-ba3c-41371a139896" />
+        <option name="url" value="https://github.com/RolandOsornio/randomRepo.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectId" id="1xZhS1ftGWPL3jM51hx5sc1aoNE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/WarmupWeek1_2/MainApp.java" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/WarmupWeek1_2/MainApp.java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rolan\OneDrive\Documents\Intellij Projects\CSC335 SE\src\mainProjectPackage" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WarmupWeek1_2.MainApp" />
+      <module name="CSC335 SE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="WarmupWeek1_2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainApp" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="345822b2-2d7f-4be1-baf7-0097356f85d2" name="Changes" comment="" />
+      <created>1630568515128</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1630568515128</updated>
+      <workItem from="1630568516594" duration="118000" />
+      <workItem from="1630568647761" duration="3633000" />
+      <workItem from="1630600812325" duration="2769000" />
+      <workItem from="1630628615413" duration="8364000" />
+      <workItem from="1630977650311" duration="53000" />
+      <workItem from="1631033212874" duration="1193000" />
+      <workItem from="1631206026865" duration="5108000" />
+      <workItem from="1631336015312" duration="9968000" />
+      <workItem from="1631638649483" duration="3886000" />
+      <workItem from="1631668252110" duration="5525000" />
+      <workItem from="1631817722812" duration="789000" />
+      <workItem from="1632242795861" duration="4955000" />
+      <workItem from="1632336216256" duration="1295000" />
+      <workItem from="1632359072864" duration="1199000" />
+      <workItem from="1632423444673" duration="633000" />
+      <workItem from="1632424143448" duration="1981000" />
+      <workItem from="1633041652061" duration="743000" />
+      <workItem from="1633322553816" duration="526000" />
+      <workItem from="1633458477735" duration="3741000" />
+      <workItem from="1633472762550" duration="2409000" />
+    </task>
+    <task id="LOCAL-00001" summary="Finished 1st version of Happy Prime numbers for week 1">
+      <created>1631404646217</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1631404646217</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Finished Happy-Prime assignment 2 on week 2 with the misunderstanding still unfixed">
+      <created>1631415879624</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1631415879624</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fixed exception handling still executing rest of code">
+      <created>1631668337390</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1631668337390</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed 0 showing as prime bug">
+      <created>1631668440589</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1631668440589</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fixed misunderstanding + improved presentation of factors to fit client's request">
+      <created>1631674041326</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1631674041326</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Formatted MainApp.java">
+      <created>1633458809551</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1633458809551</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added starter files (given by Reinhart)">
+      <created>1633459664617</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1633459664617</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Finished 1st version of Happy Prime numbers for week 1" />
+    <MESSAGE value="Finished Happy-Prime assignment 2 on week 2 with the misunderstanding still unfixed" />
+    <MESSAGE value="Fixed exception handling still executing rest of code" />
+    <MESSAGE value="Fixed 0 showing as prime bug" />
+    <MESSAGE value="Fixed misunderstanding + improved presentation of factors to fit client's request" />
+    <MESSAGE value="Formatted MainApp.java" />
+    <MESSAGE value="Added starter files (given by Reinhart)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added starter files (given by Reinhart)" />
+  </component>
+</project>
