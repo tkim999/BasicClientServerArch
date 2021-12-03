@@ -1,16 +1,6 @@
 package Client;
 
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.ComponentOrientation;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -20,11 +10,9 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -56,10 +44,11 @@ public class boxLayoutClient extends JFrame {
     JScrollPane con;
     JScrollPane male;
 
+    JFrame frame;
 
     // make panels
-    JPanel panel = logIn();
-    JPanel panel2 = logIn();
+    JPanel LogInUser = logIn();
+    JPanel SignUpUser = signUp();
 
     //logic for which panel is visible
     public int visible = 0;
@@ -69,6 +58,7 @@ public class boxLayoutClient extends JFrame {
 		// -- construct the base JFrame first
 		super();
         
+        frame = this;
 		
 		// -- set the application title
 		this.setTitle("PerfectNumberGui");
@@ -91,8 +81,11 @@ public class boxLayoutClient extends JFrame {
 		// -- show the frame on the screen
 		this.setVisible(true);
 
-        this.add(panel);
+        this.add(LogInUser);
 	}
+
+    public void CreateComponents()
+    {}
 
     public JPanel logIn()
     {
@@ -130,18 +123,6 @@ public class boxLayoutClient extends JFrame {
 		submit.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(submit);
 
-        e = new JLabel("email");
-        email = new JTextArea("",1, 5);
-        male = new JScrollPane(email);
-        male.setAutoscrolls(true);
-        male.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
-        c = new JLabel("confirm password");
-        confirm = new JTextArea("",1, 5);
-        con = new JScrollPane(confirm);
-        con.setAutoscrolls(true);
-        con.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
         signUp = new JButton("sign up");
 		signUp.setAlignmentX(Component.CENTER_ALIGNMENT);
         signUp.addActionListener(new signUpListener());
@@ -152,33 +133,88 @@ public class boxLayoutClient extends JFrame {
         return panel;
     }
 
+    public JPanel signUp()
+    {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.setBorder(new EmptyBorder(28, 28, 28, 28));
+
+		//add the components to the pannel and set their location
+		//-------------------------------------------------------
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        u = new JLabel("username");
+		u.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(u);
+
+
+        username = new JTextArea("",1, 500);
+        user = new JScrollPane(username);
+        user.setAutoscrolls(true);
+        user.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		user.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        p = new JLabel("password");
+		p.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        password = new JTextArea("",1, 500);
+        pass = new JScrollPane(password);
+        pass.setAutoscrolls(true);
+        pass.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		pass.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        submit = new JButton("submit");
+		submit.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        e = new JLabel("email");
+        email = new JTextArea("",1, 5);
+        male = new JScrollPane(email);
+        male.setAutoscrolls(true);
+        male.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        e.setAlignmentX(Component.CENTER_ALIGNMENT);
+        male.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        c = new JLabel("confirm password");
+        confirm = new JTextArea("",1, 5);
+        con = new JScrollPane(confirm);
+        c.setAlignmentX(Component.CENTER_ALIGNMENT);
+        con.setAutoscrolls(true);
+        con.setAlignmentX(Component.CENTER_ALIGNMENT);
+        con.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+        signUp = new JButton("sign up");
+		signUp.setAlignmentX(Component.CENTER_ALIGNMENT);
+        signUp.addActionListener(new signUpListener());
+
+		//---------------------------------------------------------
+
+        panel.add(u);
+        panel.add(user);
+        panel.add(e);
+        panel.add(male);
+        panel.add(p);
+        panel.add(pass);
+        panel.add(c);
+        panel.add(con);
+        panel.add(submit);
+
+
+        return panel;
+    }
+
     class signUpListener implements ActionListener
     {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             // TODO Auto-generated method stub
-            
+            frame.remove(LogInUser);
+            frame.add(SignUpUser);
+            frame.repaint();
 
         }
         
     }
 
-    public void signUp()
-    {
-        panel2.removeAll();
-        panel2.add(u);
-        panel2.add(user);
-        panel2.add(e);
-        panel2.add(male);
-        panel2.add(p);
-        panel2.add(pass);
-        panel2.add(c);
-        panel2.add(con);
-        panel2.add(submit);
-        panel = panel2;
-        repaint();
-    }
 	
     public static void main(String [] args)
     {
