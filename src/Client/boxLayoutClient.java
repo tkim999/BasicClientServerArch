@@ -168,7 +168,7 @@ public class boxLayoutClient extends JFrame {
 
         submit = new JButton("submit");
 		submit.setAlignmentX(Component.CENTER_ALIGNMENT);
-        submit.addActionListener(new NewUserSubmit());
+        submit.addActionListener(new SubmitNewUserCredentials());
         
 
         e = new JLabel("email");
@@ -178,16 +178,6 @@ public class boxLayoutClient extends JFrame {
         male.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         e.setAlignmentX(Component.CENTER_ALIGNMENT);
         male.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        /*
-        c = new JLabel("confirm password");
-        confirm = new JTextArea("",1, 5);
-        con = new JScrollPane(confirm);
-        c.setAlignmentX(Component.CENTER_ALIGNMENT);
-        con.setAutoscrolls(true);
-        con.setAlignmentX(Component.CENTER_ALIGNMENT);
-        con.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        */
 
         signUp = new JButton("sign up");
 		signUp.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -201,8 +191,6 @@ public class boxLayoutClient extends JFrame {
         panel.add(male);
         panel.add(p);
         panel.add(pass);
-        //panel.add(c);
-        //panel.add(con);
         panel.add(submit);
 
 
@@ -286,18 +274,6 @@ public class boxLayoutClient extends JFrame {
             SignUpUser.repaint();         
             frame.repaint();
 
-        }
-        
-    }
-
-    class NewUserSubmit implements ActionListener
-    {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
-            
-            
         }
         
     }
@@ -387,11 +363,46 @@ public class boxLayoutClient extends JFrame {
 
     } 
 
+    class SubmitNewUserCredentials implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            if (createNewUser(username.getText(), password.getText(), email.getText()))
+            {
+                username.setText("");
+                password.setText("");
+                email.setText("");
+                LogInUser.setVisible(true);
+                SignUpUser.setVisible(false);
+                SignUpUser.repaint();
+                LogInUser.repaint();
+                frame.repaint();
+            }
+            else
+            {
+                username.setText("");
+                password.setText("");
+                email.setText("");
+            }
+        }
+        
+    }
+
 
 
     public boolean authenticateUser(String username, String password)
     {
         //send over info to server to check for correctness
+        return true;
+    }
+
+    public boolean createNewUser(String username, String password, String email)
+    {
+        //send info to server
+        //if it works return true
+        //if it does not return false
         return true;
     }
 
