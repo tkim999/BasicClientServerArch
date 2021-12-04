@@ -207,8 +207,11 @@ public class boxLayoutClient extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             // TODO Auto-generated method stub
-            frame.remove(LogInUser);
             frame.add(SignUpUser);
+            SignUpUser.setVisible(true);
+            LogInUser.setVisible(false);
+            LogInUser.repaint();
+            SignUpUser.repaint();         
             frame.repaint();
 
         }
