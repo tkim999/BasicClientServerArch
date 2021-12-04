@@ -34,7 +34,10 @@ public class boxLayoutClient extends JFrame {
     JLabel p;
     JLabel u;
     JButton submit;
+    JButton submitLogIn;
     JButton signUp;
+    JButton logOutButton;
+    JButton changePasswordButton;
     JScrollPane pass;
     JScrollPane user;
     JTextArea confirm;
@@ -49,6 +52,8 @@ public class boxLayoutClient extends JFrame {
     // make panels
     JPanel LogInUser = logIn();
     JPanel SignUpUser = signUp();
+    JPanel DisplayContent = loggedIn();
+    JPanel newPassword = changePassword();
 
     //logic for which panel is visible
     public int visible = 0;
@@ -84,9 +89,6 @@ public class boxLayoutClient extends JFrame {
         this.add(LogInUser);
 	}
 
-    public void CreateComponents()
-    {}
-
     public JPanel logIn()
     {
         JPanel panel = new JPanel();
@@ -119,9 +121,10 @@ public class boxLayoutClient extends JFrame {
 		pass.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(pass);
 
-        submit = new JButton("submit");
-		submit.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(submit);
+        submitLogIn = new JButton("submit");
+		submitLogIn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        submitLogIn.addActionListener(new LogInSubmit());
+        panel.add(submitLogIn);
 
         signUp = new JButton("sign up");
 		signUp.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -164,6 +167,8 @@ public class boxLayoutClient extends JFrame {
 
         submit = new JButton("submit");
 		submit.setAlignmentX(Component.CENTER_ALIGNMENT);
+        submit.addActionListener(new NewUserSubmit());
+        
 
         e = new JLabel("email");
         email = new JTextArea("",1, 5);
@@ -203,6 +208,40 @@ public class boxLayoutClient extends JFrame {
         return panel;
     }
 
+    public JPanel changePassword()
+    {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.setBorder(new EmptyBorder(28, 28, 28, 28));
+
+		//add the components to the pannel and set their location
+		//-------------------------------------------------------
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        return panel;
+    }
+
+    public JPanel loggedIn()
+    {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.setBorder(new EmptyBorder(28, 28, 28, 28));
+
+		//add the components to the pannel and set their location
+		//-------------------------------------------------------
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        logOutButton = new JButton("log out");
+        logOutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(logOutButton);
+
+        changePasswordButton = new JButton("change password");
+        changePasswordButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(changePasswordButton);
+
+        return panel;
+    }
+
     class signUpListener implements ActionListener
     {
 
@@ -227,8 +266,61 @@ public class boxLayoutClient extends JFrame {
         public void actionPerformed(ActionEvent e) {
             // TODO Auto-generated method stub
             
+            
         }
         
+    }
+
+    class LogInSubmit implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            if (authenticateUser(username.getText(), password.getText()))
+            {
+                //username.setText("");
+                //password.setText("");
+                frame.add(DisplayContent);
+                DisplayContent.setVisible(true);
+                LogInUser.setVisible(false);
+                LogInUser.repaint();
+                DisplayContent.repaint();
+                frame.repaint();
+            }
+            else
+            {
+                username.setText("");
+                password.setText("");
+            }
+        }
+
+    }
+
+    class ResetPassword implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            
+        }
+
+    }
+
+    public boolean authenticateUser(String username, String password)
+    {
+        //send over info to server to check for correctness
+        return true;
+    }
+
+    public boolean resetPassword(String password, String confirmPassword)
+    {
+        //send over password and confrim password
+        //accept boolean statement 
+        //if true password was reset
+        //if false password could not be reset
+        return true;
     }
 
 	
