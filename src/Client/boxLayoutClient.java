@@ -173,6 +173,7 @@ public class boxLayoutClient extends JFrame {
         e.setAlignmentX(Component.CENTER_ALIGNMENT);
         male.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        /*
         c = new JLabel("confirm password");
         confirm = new JTextArea("",1, 5);
         con = new JScrollPane(confirm);
@@ -180,6 +181,7 @@ public class boxLayoutClient extends JFrame {
         con.setAutoscrolls(true);
         con.setAlignmentX(Component.CENTER_ALIGNMENT);
         con.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        */
 
         signUp = new JButton("sign up");
 		signUp.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -193,8 +195,8 @@ public class boxLayoutClient extends JFrame {
         panel.add(male);
         panel.add(p);
         panel.add(pass);
-        panel.add(c);
-        panel.add(con);
+        //panel.add(c);
+        //panel.add(con);
         panel.add(submit);
 
 
@@ -214,6 +216,17 @@ public class boxLayoutClient extends JFrame {
             SignUpUser.repaint();         
             frame.repaint();
 
+        }
+        
+    }
+
+    class NewUserSubmit implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            
         }
         
     }
