@@ -38,6 +38,7 @@ public class boxLayoutClient extends JFrame {
     JButton signUp;
     JButton logOutButton;
     JButton changePasswordButton;
+    JButton resetPasswordSubmit;
     JScrollPane pass;
     JScrollPane user;
     JTextArea confirm;
@@ -218,6 +219,34 @@ public class boxLayoutClient extends JFrame {
 		//-------------------------------------------------------
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
+
+        c = new JLabel("confirm password");
+        confirm = new JTextArea("",1, 5);
+        con = new JScrollPane(confirm);
+        c.setAlignmentX(Component.CENTER_ALIGNMENT);
+        con.setAutoscrolls(true);
+        con.setAlignmentX(Component.CENTER_ALIGNMENT);
+        con.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+        p = new JLabel("password");
+		p.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        password = new JTextArea("",1, 500);
+        pass = new JScrollPane(password);
+        pass.setAutoscrolls(true);
+        pass.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		pass.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        resetPasswordSubmit = new JButton("submit");
+        resetPasswordSubmit.addActionListener(new ResetPassword());
+        resetPasswordSubmit.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        panel.add(p);
+        panel.add(pass);
+        panel.add(c);
+        panel.add(con);
+        panel.add(resetPasswordSubmit);
+
         return panel;
     }
 
@@ -233,10 +262,12 @@ public class boxLayoutClient extends JFrame {
 
         logOutButton = new JButton("log out");
         logOutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        logOutButton.addActionListener(new LogOutUser());
         panel.add(logOutButton);
 
         changePasswordButton = new JButton("change password");
         changePasswordButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        changePasswordButton.addActionListener(new DisplayResetPassword());
         panel.add(changePasswordButton);
 
         return panel;
@@ -279,8 +310,8 @@ public class boxLayoutClient extends JFrame {
             // TODO Auto-generated method stub
             if (authenticateUser(username.getText(), password.getText()))
             {
-                //username.setText("");
-                //password.setText("");
+                username.setText("");
+                password.setText("");
                 frame.add(DisplayContent);
                 DisplayContent.setVisible(true);
                 LogInUser.setVisible(false);
@@ -297,16 +328,66 @@ public class boxLayoutClient extends JFrame {
 
     }
 
+    class DisplayResetPassword implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            frame.add(newPassword);
+            newPassword.setVisible(true);
+            DisplayContent.setVisible(false);
+            DisplayContent.repaint();
+            newPassword.repaint();
+            frame.repaint();
+            
+        }
+
+    }
+
     class ResetPassword implements ActionListener
     {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             // TODO Auto-generated method stub
+            if (resetPassword(password.getText(), confirm.getText()))
+            {
+                password.setText("");
+                confirm.setText("");
+                LogInUser.setVisible(true);
+                newPassword.setVisible(false);
+                newPassword.repaint();
+                LogInUser.repaint();
+                frame.repaint();
+            }
+            else
+            {
+                password.setText("");
+                confirm.setText("");
+            }
+        }
+        
+    }
+
+    class LogOutUser implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            LogInUser.setVisible(true);
+            DisplayContent.setVisible(false);
+            DisplayContent.repaint();
+            LogInUser.repaint();
+            frame.repaint();
+            logOutUser();
             
         }
 
-    }
+    } 
+
+
 
     public boolean authenticateUser(String username, String password)
     {
@@ -321,6 +402,11 @@ public class boxLayoutClient extends JFrame {
         //if true password was reset
         //if false password could not be reset
         return true;
+    }
+
+    public void logOutUser()
+    {
+        //sends message to server to log out the user
     }
 
 	
