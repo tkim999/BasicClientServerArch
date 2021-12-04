@@ -18,17 +18,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class boxLayoutClient extends JFrame {
-    //login
-    //sign up
-
+    
+    //creates final variables for the size of the JFrame
     private final int WIDTH = 500;
     private final int HEIGHT = 500;
 
-    //add elements here
+    //create all the components
+    //these will later be initalized inside the methods that define the JPanels
+    //they will also be added to the below JPanels
     JTextArea password;
     JTextArea username;
     JLabel p;
@@ -48,22 +48,24 @@ public class boxLayoutClient extends JFrame {
     JScrollPane con;
     JScrollPane male;
 
+    //create JFrame that will be used as a value to refrence itself
+    //used for accessing the JFrame outside of its constructor
     JFrame frame;
 
-    // make panels
+    //Creates the 4 JPanels that hold the UI
+    //the visibility of the panels is toggled to switch between them
     JPanel LogInUser = logIn();
     JPanel SignUpUser = signUp();
     JPanel DisplayContent = loggedIn();
     JPanel newPassword = changePassword();
 
-    //logic for which panel is visible
-    public int visible = 0;
-
+    //constructor for the JFrame
     public boxLayoutClient()
 	{
 		// -- construct the base JFrame first
 		super();
         
+        //initalizes the self refirencial JFrame
         frame = this;
 		
 		// -- set the application title
@@ -87,18 +89,24 @@ public class boxLayoutClient extends JFrame {
 		// -- show the frame on the screen
 		this.setVisible(true);
 
+        //displays the starting state of the client which is the log in screen
         this.add(LogInUser);
 	}
 
+    //following are the methods that are used to define The 4 JPanels
+    //each will initalize all of the previously created objects inside of themselves
+
     public JPanel logIn()
     {
+        //Defines the log in screen's JPanel
+
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBorder(new EmptyBorder(28, 28, 28, 28));
-
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		//add the components to the pannel and set their location
 		//-------------------------------------------------------
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        
         u = new JLabel("username");
 		u.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(u);
@@ -139,13 +147,14 @@ public class boxLayoutClient extends JFrame {
 
     public JPanel signUp()
     {
+        //defines the sign Up screen's JPanel
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBorder(new EmptyBorder(28, 28, 28, 28));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
 		//add the components to the pannel and set their location
 		//-------------------------------------------------------
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         u = new JLabel("username");
 		u.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(u);
@@ -199,14 +208,14 @@ public class boxLayoutClient extends JFrame {
 
     public JPanel changePassword()
     {
+        //defines the change password screen's JPanel
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBorder(new EmptyBorder(28, 28, 28, 28));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
 		//add the components to the pannel and set their location
 		//-------------------------------------------------------
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
 
         c = new JLabel("confirm password");
         confirm = new JTextArea("",1, 5);
@@ -240,13 +249,14 @@ public class boxLayoutClient extends JFrame {
 
     public JPanel loggedIn()
     {
+        //Defines the logged in screen's JPanel
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBorder(new EmptyBorder(28, 28, 28, 28));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
 		//add the components to the pannel and set their location
 		//-------------------------------------------------------
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
         logOutButton = new JButton("log out");
         logOutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -261,12 +271,21 @@ public class boxLayoutClient extends JFrame {
         return panel;
     }
 
+
+    //these will define the action Listeners
+    //these will define what happens upon certain events, most notably when buttons are pushed
+    // they maily call methods that will pass info to the server, switch between JPanels, and clear fields
+
     class signUpListener implements ActionListener
     {
-
+        //user is sent to the sign up screen
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
+            //switches between the log in and sign up screens
+            //adds the sign up
+            //changes the visibility of panels
+            //calls repaint
+
             frame.add(SignUpUser);
             SignUpUser.setVisible(true);
             LogInUser.setVisible(false);
@@ -280,10 +299,10 @@ public class boxLayoutClient extends JFrame {
 
     class LogInSubmit implements ActionListener
     {
-
+        //if user is valid user is sent to the logged in screen
+        //if not fields are cleared and they remain there
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
             if (authenticateUser(username.getText(), password.getText()))
             {
                 username.setText("");
@@ -306,10 +325,9 @@ public class boxLayoutClient extends JFrame {
 
     class DisplayResetPassword implements ActionListener
     {
-
+        //user is sent from logged in screen to the change password screen
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
             frame.add(newPassword);
             newPassword.setVisible(true);
             DisplayContent.setVisible(false);
@@ -323,10 +341,9 @@ public class boxLayoutClient extends JFrame {
 
     class ResetPassword implements ActionListener
     {
-
+        //if passwords match and are valid the user is sent to the log in screen and logged out
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
             if (resetPassword(password.getText(), confirm.getText()))
             {
                 password.setText("");
@@ -336,6 +353,7 @@ public class boxLayoutClient extends JFrame {
                 newPassword.repaint();
                 LogInUser.repaint();
                 frame.repaint();
+                logOutUser();
             }
             else
             {
@@ -348,10 +366,9 @@ public class boxLayoutClient extends JFrame {
 
     class LogOutUser implements ActionListener
     {
-
+        //user is sent to the log in screen ad logged out
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
             LogInUser.setVisible(true);
             DisplayContent.setVisible(false);
             DisplayContent.repaint();
@@ -365,10 +382,9 @@ public class boxLayoutClient extends JFrame {
 
     class SubmitNewUserCredentials implements ActionListener
     {
-
+        //if a submitted credentals are valid and not already in use then user is sent to the log in screen
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
             if (createNewUser(username.getText(), password.getText(), email.getText()))
             {
                 username.setText("");
@@ -391,16 +407,20 @@ public class boxLayoutClient extends JFrame {
     }
 
 
+    //other methods
+    //mainly for comunicating with the server
 
     public boolean authenticateUser(String username, String password)
     {
         //send over info to server to check for correctness
+        //true if valid false if invalid
         return true;
     }
 
     public boolean createNewUser(String username, String password, String email)
     {
         //send info to server
+        //server attempts to create a new user
         //if it works return true
         //if it does not return false
         return true;
@@ -409,7 +429,7 @@ public class boxLayoutClient extends JFrame {
     public boolean resetPassword(String password, String confirmPassword)
     {
         //send over password and confrim password
-        //accept boolean statement 
+        //server resets password if it is valid
         //if true password was reset
         //if false password could not be reset
         return true;
@@ -418,9 +438,10 @@ public class boxLayoutClient extends JFrame {
     public void logOutUser()
     {
         //sends message to server to log out the user
+        //server attempts to log out the user
     }
 
-	
+	//main method used to run the client
     public static void main(String [] args)
     {
         new boxLayoutClient();
