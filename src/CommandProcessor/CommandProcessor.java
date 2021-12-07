@@ -8,7 +8,7 @@ public class CommandProcessor {
 
     }
 
-    public boolean resetGUI() {
+    public boolean resetGUI() { //reset the GUI text fields
         return true;
     }
 
@@ -29,7 +29,9 @@ public class CommandProcessor {
     public boolean checkPasswordContents(String password) {
         boolean validPasswordContents = true;
         ArrayList<String> blockList = new ArrayList<String>(); //if we have words that we do not want to be part of a password, we can put it into here as a String
-        if (password.contains("\\")){//what a password cannot have in it
+        if (8 > password.length() && password.length() > 64) {
+            validPasswordContents = false;
+        } else if (password.contains("\\")){//what a password cannot have in it
             validPasswordContents = false;
             System.out.println("contains \" \\ \"");
         } else if (validPasswordContents) {
@@ -42,11 +44,26 @@ public class CommandProcessor {
         return validPasswordContents;
     }
 
-    public boolean checkPasswordLength(String password) { //check if password is long enough
-        boolean validPasswordLength = false;
-        if (8 <= password.length() && password.length() <= 32) {//password length for now is between 8 to 32 char long
-            validPasswordLength = true;
+    public boolean checkUsername(String username) {
+        boolean validUsername = true;
+        String possibleUsernameChar = "abcdefghijklmnopqrstuvwxyz1234567890.";
+        String usernameChar = "";
+        if (username.length() < 3 && username.length() > 64) {
+            validUsername = false;
+            return validUsername;
+        } else if (validUsername) {
+            for (int i = 0; i < username.length(); i++) { //checks each individual char of username for valid characters
+                if (username.length()-1 > i) {
+                    usernameChar = username.substring(i, i+1);
+                } else if (username.length()-1 == i) {
+                    usernameChar = username.substring(i);
+                }
+                if (!possibleUsernameChar.contains(usernameChar)) {
+                    validUsername = false;
+                    return validUsername;
+                }
+            }
         }
-        return validPasswordLength;
+        return validUsername;
     }
 }
